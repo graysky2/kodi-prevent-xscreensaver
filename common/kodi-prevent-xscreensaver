@@ -1,0 +1,17 @@
+#!/bin/bash
+# Emulate the mplayer hearbeat-cmd to keep xscreensaver from coming on while the kodi gui is active.
+# Inspiration from this post: http://ubuntuforums.org/showthread.php?t=1931074&p=11716198#post11716198
+
+# Nothing to do if user does not have requisite binaries.
+[[ -z $(which xscreensaver-command) ]] && exit 1
+
+while true; do
+	if [[ -n $(pidof kodi.bin) ]]; then
+		while [[ -n $(pidof kodi.bin) ]]; do
+			xscreensaver-command -deactivate &>/dev/null
+			sleep 49s
+		done
+	else
+		sleep 49s
+	fi
+done
