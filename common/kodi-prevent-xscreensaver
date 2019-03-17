@@ -6,8 +6,8 @@
 [[ -z $(which xscreensaver-command) ]] && exit 1
 
 while true; do
-	if [[ -n $(pidof kodi.bin) ]]; then
-		while [[ -n $(pidof kodi.bin) ]]; do
+	if [[ -n $(pidof kodi-x11) ]]; then
+		while [[ -n $(pidof kodi-x11) ]]; do
 			xscreensaver-command -deactivate &>/dev/null
 			sleep 49s
 		done
